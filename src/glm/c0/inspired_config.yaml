@@ -1,0 +1,7 @@
+from_json: ../data/inspired/test.jsonl
+max_tokens: 1024
+use_related_knowledge: 0
+n_threads: 1
+n_samples: -1
+pretrained_model_name_or_path: ../../LLM/chatglm2-6b
+to_json: glm/c0/inspired_test.jsonl
