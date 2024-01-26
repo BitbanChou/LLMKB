@@ -1,0 +1,7 @@
+from_json: /home/dell/qsj/LLM+kg/data/redial/test_p3.jsonl
+max_tokens: 1024
+use_knowledge_prompt: 1
+n_threads: 1
+n_samples: -1
+pretrained_model_name_or_path: /home/dell/qsj/LLMS/Llama2-Chinese-7b-Chat
+to_json: /home/dell/qsj/LLM+kg/src/llama/p3/redial_test.jsonl
