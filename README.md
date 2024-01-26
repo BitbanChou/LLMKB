@@ -131,7 +131,17 @@ python llmkb.py --config E:\pythonFiles\files\LLM+kg\src\glm\c0\inspired_config.
 
 ### Experimental Results
 
-We put all the experimental results in the src folder for checking.
+#### We put all the experimental results in the src folder for checking.
+
+We categorize all generated items into two categories:
+
+| Result Type | OOV Items Filtered ? | Result Folder |
+| -- | -- | -- |
+| `Ψ0` | ❌ | filtered_False_exclude_seen_False |
+| `Ψ1` | ✅ | filtered_True_exclude_seen_False |
+
+"OOV Items" means the out-of-vocabulary items, i.e., the items that are not legal in the pre-defined candidate set. We can filter the generated OOV items out or not. 
+                       
 
 ### 1. Post-process your results in `${YOUR_DIR}`, here is an example for settings of c0,raw:
 * Note:
