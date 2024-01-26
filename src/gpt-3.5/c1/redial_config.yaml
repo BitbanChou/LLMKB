@@ -1,0 +1,7 @@
+from_json: ../data/inspired/test_p2.jsonl
+max_tokens: 1024
+use_related_knowledge: 0
+n_threads: 1
+n_samples: -1
+pretrained_model_name_or_path: gpt-3.5-turbo
+to_json: E:\pythonFiles\files\LLM+kg\src\gpt-3.5\c1\redial_test.jsonl
