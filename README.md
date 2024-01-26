@@ -135,9 +135,9 @@ We put all the experimental results in the src folder for checking.
 
 ### 1. Post-process your results in `${YOUR_DIR}`, here is an example for settings of c0,raw:
 * Note:
-dataset = [inspired,redial]
-type = [raw,db,db+related]
-For GPT-3.5-t,you should put the generated ${DATA}.json file in post-fix folder first for extraction
+• dataset = [inspired,redial]
+• type = [raw,db,db+related]
+• For GPT-3.5-t,you should put the generated ${DATA}.json file in "gpt-3.5/c0/post-fix" folder first for extraction
     ```bash
     # if this extraction is not special
     cp gpt-3.5/c0/extract.py ${YOUR_DIR}
