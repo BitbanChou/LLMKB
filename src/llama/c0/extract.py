@@ -97,7 +97,7 @@ def main(dataset: str = None,type: str = None):
     """
 
     # get paths
-    pred_json = os.path.join(DIR, f'{dataset}_test2.jsonl')
+    pred_json = os.path.join(DIR, f'{dataset}_test.jsonl')
     gt_json = os.path.join(DIR, f'../../../data/{dataset}/test.jsonl')
     meta_json = os.path.join(DIR, f'../../../data/{dataset}/entity2id.json')
 
