@@ -9,6 +9,12 @@ This is the source code of KBs construction, LLMs scripts, and experimental resu
 
 Please download DBpedia from the [link](https://databus.dbpedia.org/dbpedia/mappings/mappingbased-objects/2021.09.01/mappingbased-objects_lang=en.ttl.bz2), after unzipping, move it into `data`.
 
+Download Link for models:
+Retrieval Model: [link](https://huggingface.co/GanymedeNil/text2vec-large-chinese)
+LLaMA2: [link](https://huggingface.co/FlagAlpha/Llama2-Chinese-7b-Chat)
+ChatGLM2: [link](https://huggingface.co/THUDM/chatglm2-6b)
+
+
 ### Testing Data for Our Paper
 
 We upload the test data in `data/` folder, which can be used to form the prompt to query different LLMs. The `inspired` and `redial` datasets are adapted from the data provided by [`CRSLab`](https://github.com/RUCAIBox/CRSLab/tree/main), where we added some additional data fields like `is_user`.
@@ -105,27 +111,41 @@ pip install -r requirements.txt
     n_threads: 1
     n_samples: -1
     pretrained_model_name_or_path: gpt-3.5-turbo # model path
-    to_json: E:\pythonFiles\files\LLM+kg\src\gpt-3.5\c0\inspired_test.jsonl 
+    to_json: E:\pythonFiles\files\LLMKB\src\gpt-3.5\c0\inspired_test.jsonl 
     ```
+
+#### Modify prompt in prompt.txt:
+```txt
+Pretend you are a movie recommender system. I will give you a conversation between a user and you (a recommender system).Here is the conversation:<<<<CONVERSATION>>>>.Your Task: <<<<QUESTION>>>>
+```
+#### Modify settings in `config.py` :
+```py
+class Config:
+    embedding_model_name = 'E:/pythonFiles/files/LLM/GanymedeNil/text2vec-large-chinese'  # path of the retrieval model
+    vector_store_path = 'E:/pythonFiles/files/LLMKB/resource/faiss/' # path of the vector store
+    docs_path = 'E:/pythonFiles/files/LLMKB/resource/txt/'  # path of the document of res.txt
+    prompt = "Based on the information and conversation, you reply me with 20 recommendations without extra sentences.Please reply in english." # task description
+```
+
 ### 3.Run LLMs scripts with the YAML file:
 #### For the 𝑟𝑎𝑤 setting:
 
 ```shell script
 # GPT-3.5-t 
 # please enter your openai-api_key before running
-python openaiTest.py --config E:\pythonFiles\files\LLM+kg\src\llama\c0\inspired_config.yaml
+python openaiTest.py --config E:\pythonFiles\files\LLMKB\src\llama\c0\inspired_config.yaml
 
 # LLaMA
-python llamaTest.py --config E:\pythonFiles\files\LLM+kg\src\llama\c0\inspired_config.yaml
+python llamaTest.py --config E:\pythonFiles\files\LLMKB\src\llama\c0\inspired_config.yaml
 
 # ChatGLM
-python glmTest.py --config E:\pythonFiles\files\LLM+kg\src\glm\c0\inspired_config.yaml
+python glmTest.py --config E:\pythonFiles\files\LLMKB\src\glm\c0\inspired_config.yaml
 ```
 
 #### For 𝑑𝑏 and 𝑑𝑏 + 𝑟𝑒𝑙𝑎𝑡𝑒𝑑 settings:
 ```shell script 
 # if you use GPT-3.5-t, please enter your openai-api_key before running
-python llmkb.py --config E:\pythonFiles\files\LLM+kg\src\glm\c0\inspired_config.yaml
+python llmkb.py --config E:\pythonFiles\files\LLMKB\src\glm\c0\inspired_config.yaml
 ```
 
 
