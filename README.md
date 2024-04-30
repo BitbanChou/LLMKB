@@ -1,6 +1,6 @@
 # LLMKB: Large Language Models with Knowledge Base Augmentation for Conversational Recommendation
 
-![intro](img/model.jpg)
+![intro](img/model2.jpg)
 
 This is the source code of KBs construction, LLMs scripts, and experimental results from our paper.
 
@@ -96,7 +96,10 @@ gzip dataset.tsv
 We adopt the retrieval model fine-tuning to achieve embedding calibration in CRS tasks.
 
 ```shell script
-python modelTrain.py --model_arch cosent --do_train --do_predict --num_epochs 10 --output_dir ./outputs/llmkb_cosent --stsb_file ./dataset.tsv.gz --model_name ./bert-base
+python modelTrain.py --model_arch cosent --do_train --do_predict --num_epochs 10
+    --output_dir ./outputs/llmkb_cosent 
+    --stsb_file ./dataset.tsv.gz # dataset path 
+    --model_name ./bert-base # retrieval model path
 ```
 
 ## LLMs Scripts
