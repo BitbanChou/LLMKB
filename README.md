@@ -90,13 +90,13 @@ After running the above code, the corresponding knowledge base will be generated
 
 ## Model Finetuning
 
-We randomly selected some pairs to generate the training data.
+1.We randomly selected some pairs to generate the training data.
 ```shell script
 cd finetune
 python mask_file --input_file # path of generated res.txt  --out_put_file # path of output file
 gzip dataset.tsv
 ```
-We adopt the retrieval model fine-tuning to achieve embedding calibration in CRS tasks.
+2.We adopt the retrieval model fine-tuning to achieve embedding calibration in CRS tasks.
 
 ```shell script
 python modelTrain.py --model_arch cosent --do_train --do_predict --num_epochs 10
