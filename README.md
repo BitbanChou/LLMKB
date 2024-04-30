@@ -1,6 +1,6 @@
 # LLMKB: Large Language Models with Knowledge Base Augmentation for Conversational Recommendation
 
-![intro](img/model2.jpg)
+![intro](img/model2.png)
 
 This is the source code of KBs construction, LLMs scripts, and experimental results from our paper.
 
