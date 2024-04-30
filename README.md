@@ -74,10 +74,10 @@ python extractMappingDictionary.py --dataset redial
 ### 4.Process heterogeneous knowledge in preparation for building a knowledge base.
 ```shell script
 # inspired
-python extractGraph.py --dataset inspired --type db # [db,db+related]
+python extractGraph.py --dataset inspired --type db 
 
 # redial
-python extractGraph.py --dataset redial --type db # [db,db+related]
+python extractGraph.py --dataset redial --type db 
 ```
 ### 5.Place the generated "res.txt" from the previous step into the "resource/txt" directory.
 ```shell script
@@ -85,15 +85,21 @@ python document.py
 ```
 After running the above code, the corresponding knowledge base will be generated in the "resource/faiss" directory.
 
+## Model Finetuning
 
+We randomly selected some pairs to generate the training data.
+```shell script
+cd finetune
+python mask_file --input_file # path of generated res.txt  --out_put_file # path of output file
+gzip dataset.tsv
+```
+We adopt the retrieval model fine-tuning to achieve embedding calibration in CRS tasks.
+
+```shell script
+python modelTrain.py --model_arch cosent --do_train --do_predict --num_epochs 10 --output_dir ./outputs/llmkb_cosent --stsb_file ./dataset.tsv.gz --model_name ./bert-base
+```
 
 ## LLMs Scripts
-
-To examine the impact of different types of knowledge base, we divide them into the following types:
-
-• 𝑟𝑎𝑤 : results without using a KB.
-• 𝑑𝑏 : results on loading a KB.
-• 𝑑𝑏 + 𝑟𝑒𝑙𝑎𝑡𝑒𝑑 : results on loading a KB that contains entity linking knowledge
 
 ### 1.Install related dependencies
 ```shell script
@@ -128,7 +134,7 @@ class Config:
 ```
 
 ### 3.Run LLMs scripts with the YAML file:
-#### For the 𝑟𝑎𝑤 setting:
+#### For the LLM-based methods test:
 
 ```shell script
 # GPT-3.5-t 
@@ -142,7 +148,7 @@ python llamaTest.py --config E:\pythonFiles\files\LLMKB\src\llama\c0\inspired_co
 python glmTest.py --config E:\pythonFiles\files\LLMKB\src\glm\c0\inspired_config.yaml
 ```
 
-#### For 𝑑𝑏 and 𝑑𝑏 + 𝑟𝑒𝑙𝑎𝑡𝑒𝑑 settings:
+#### For LLMKB test:
 ```shell script 
 # if you use GPT-3.5-t, please enter your openai-api_key before running
 python llmkb.py --config E:\pythonFiles\files\LLMKB\src\glm\c0\inspired_config.yaml
@@ -166,7 +172,7 @@ We categorize all generated items into two categories:
 ### 1. Post-process your results in `${YOUR_DIR}`, here is an example for settings of c0,raw:
 * Note:
 • dataset = [inspired,redial]
-• type = [raw,db,db+related]
+• type = [raw,db+related]
 • For GPT-3.5-t,you should put the generated ${DATA}.json file in "gpt-3.5/c0/post-fix" folder first for extraction
     ```bash
     # if this extraction is not special
