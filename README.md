@@ -10,8 +10,11 @@ This is the source code of KBs construction, LLMs scripts, and experimental resu
 Please download DBpedia from the [link](https://databus.dbpedia.org/dbpedia/mappings/mappingbased-objects/2021.09.01/mappingbased-objects_lang=en.ttl.bz2), after unzipping, move it into `data`.
 
 Download Link for models:
+
 Retrieval Model: [link](https://huggingface.co/GanymedeNil/text2vec-large-chinese)
+
 LLaMA2: [link](https://huggingface.co/FlagAlpha/Llama2-Chinese-7b-Chat)
+
 ChatGLM2: [link](https://huggingface.co/THUDM/chatglm2-6b)
 
 
