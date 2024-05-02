@@ -17,3 +17,5 @@ spacy==3.7.2
 torch==1.13.1+cu117
 tqdm==4.65.0
 transformers==4.33.3
+text2vec
+loguru
